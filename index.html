@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Adejumo — Portfolio Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #141414;
+    --text-muted: #6B6A66;
+    --card: #F2F1EE;
+    --card-border: #E4E2DC;
+    --pill-bg: #141414;
+    --pill-text: #FFFFFF;
+    --divider: #D8D6D0;
+    --breaker-bg: #101010;
+    --breaker-text: #F2F0EA;
+    --breaker-text-muted: rgba(242,240,234,0.55);
+    --breaker-border: rgba(242,240,234,0.25);
+    --accent: #A6763E;
+    --transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  [data-theme="dark"] {
+    --bg: #171717;
+    --text: #F2F0EA;
+    --text-muted: #9A9892;
+    --card: #212120;
+    --card-border: #333230;
+    --pill-bg: #F2F0EA;
+    --pill-text: #171717;
+    --divider: #333230;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--divider);
+    z-index: 100;
+    transition: var(--transition);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--text); }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--divider);
+    border-radius: 100px;
+    padding: 6px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .theme-toggle:hover { border-color: var(--text-muted); color: var(--text); }
+  .pill {
+    display: inline-block;
+    background: var(--pill-bg);
+    color: var(--pill-text);
+    padding: 10px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: var(--transition), transform 0.15s ease;
+  }
+  .pill:hover { transform: translateY(-1px); }
+  .pill-outline {
+    background: none;
+    color: var(--text);
+    border: 1px solid var(--divider);
+  }
+
+  @media (max-width: 720px) {
+    nav.main-nav { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 90px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 5.4vw, 58px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 780px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 560px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-cta {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION LABELS */
+  .section { padding: 80px 0; border-top: 1px solid var(--divider); transition: var(--transition); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 680px;
+    color: var(--text);
+  }
+  .about-text p { margin-bottom: 18px; }
+  .about-text .muted { color: var(--text-muted); }
+
+  /* BREAKER (always dark, regardless of toggle) */
+  .breaker {
+    background: var(--breaker-bg);
+    color: var(--breaker-text);
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .breaker::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                       linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .breaker-inner { position: relative; z-index: 1; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--breaker-border);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(242,240,234,0.8);
+    margin-bottom: 36px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+  .breaker-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.4vw, 34px);
+    font-weight: 500;
+    max-width: 620px;
+    margin-bottom: 56px;
+    letter-spacing: -0.01em;
+  }
+  .counter-row {
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .counter-block .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  #liveCounter { color: var(--accent); }
+  .counter-block .num.strike { color: rgba(242,240,234,0.35); text-decoration: line-through; }
+  .counter-block .lbl {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(242,240,234,0.55);
+  }
+  .counter-arrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    color: rgba(242,240,234,0.3);
+    align-self: center;
+    padding-bottom: 8px;
+  }
+  .stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .stat-pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 10px 20px;
+    white-space: nowrap;
+  }
+  .project-tag {
+    margin-top: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(242,240,234,0.4);
+    letter-spacing: 0.02em;
+  }
+
+  /* CASE STUDY CARDS */
+  .cards { display: flex; flex-direction: column; gap: 1px; background: var(--divider); border-radius: 14px; overflow: hidden; }
+  .card {
+    background: var(--card);
+    padding: 34px;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .card:hover { background: var(--bg); }
+  .card-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-width: 480px;
+  }
+  .card-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    border: 1px solid var(--card-border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    transition: var(--transition);
+  }
+  .card:hover .card-link { border-color: var(--text); color: var(--text); }
+
+  @media (max-width: 620px) {
+    .card { grid-template-columns: 1fr; gap: 12px; }
+    .card-link { justify-self: start; }
+  }
+
+  /* SPEAKING / COMMUNITY LIST */
+  .rows { display: flex; flex-direction: column; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--divider);
+    gap: 20px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row-title { font-size: 16px; font-weight: 500; }
+  .row-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .row-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+  .row-tag.upcoming {
+    color: var(--text);
+    border: 1px solid var(--divider);
+    border-radius: 100px;
+    padding: 4px 10px;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cert-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    border: 1px solid var(--divider);
+    border-radius: 100px;
+    padding: 8px 16px;
+    color: var(--text-muted);
+  }
+
+  /* CONTACT */
+  .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .note {
+    background: var(--card);
+    border: 1px dashed var(--card-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="logo">Elizabeth Adejumo</div>
+    <nav class="main-nav">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle">
+        <span id="toggleLabel">Dark mode</span>
+      </button>
+      <a href="#contact" class="pill">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="eyebrow">Software Engineer — Career Switcher</div>
+  <h1>From chartered engineer to software engineer<br><em>— by choice, not accident.</em></h1>
+  <p class="hero-sub">Full-Stack Software Engineer at TripAdvisor. Formerly a Chartered Mechanical Engineer (CEng, MIMechE). Self-taught into Tech. This is the record of what's followed since.</p>
+  <div class="hero-cta">
+    <a href="#work" class="pill">View my work</a>
+    <a href="#contact" class="pill pill-outline">Get in touch</a>
+  </div>
+</section>
+
+<section class="section wrap" id="about">
+  <div class="section-head">
+    <div>
+      <div class="section-label">01 — About</div>
+      <h2>The switch</h2>
+    </div>
+  </div>
+  <div class="about-text">
+    <p>I spent over five years as a Chartered Mechanical Engineer, including 1.5 years as an Assistant Project Manager at a global engineering and infrastructure consultancy. Frustrated by how much of that role relied on manual, repetitive processes, I taught myself Python to automate my own workload — chasing invoices, parsing contractor emails, wrangling spreadsheets. <a href="https://github.com/ElizabethA01/Project_Management_AutomatedReminder" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">That first project is still on GitHub</a> — the actual starting point, not just a line on a CV.</p>
+    <p class="muted">What started as a way to save time became a discovery: I loved solving problems through code more than I expected to. That realisation gave me the confidence to leave a career I'd trained years for, and switch into tech entirely — around three and a half years ago.</p>
+    <p class="muted">Both roles left their mark. The structured, safety-conscious rigor of mechanical engineering shows up in how I approach system design and code review; the stakeholder management and risk communication I built as a Project Manager now shapes how I lead cross-team migrations and mentor engineers finding their way into the industry.</p>
+  </div>
+</section>
+
+<div class="breaker">
+  <div class="wrap breaker-inner">
+    <div class="badge"><span class="dot"></span> Flagship Work — Platform Migration</div>
+    <div class="breaker-title">Took full ownership of a critical platform migration and its post-launch stabilisation. The framework I designed is now the official blueprint for every migration that's followed.</div>
+    <div class="stat-row">
+      <div class="counter-row">
+        <div class="counter-block">
+          <div class="num strike">89,085</div>
+          <div class="lbl">Jan 2026</div>
+        </div>
+        <div class="counter-arrow">→</div>
+        <div class="counter-block">
+          <div class="num" id="liveCounter">393</div>
+          <div class="lbl">May 2026</div>
+        </div>
+      </div>
+      <div class="stat-pill">−99.6%</div>
+    </div>
+    <div class="project-tag">Internally known as SupplyPrompts · supplier-service &amp; user-service</div>
+  </div>
+</div>
+
+<section class="section wrap" id="work">
+  <div class="section-head">
+    <div>
+      <div class="section-label">02 — Selected Work</div>
+      <h2>Case studies</h2>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">01</div>
+      <div>
+        <div class="card-title">Cross-team crisis resolution — partner payments bug</div>
+        <div class="card-desc">Resolved a business-critical bug blocking 900+ global partners from adding PayPal payout methods — an issue that had persisted since 2022. Challenged the initial root-cause hypothesis and designed a secure fix.</div>
+      </div>
+      <a href="#" class="card-link">View case study →</a>
+    </div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div>
+        <div class="card-title">Cotopaxi Design System Upgrade</div>
+        <div class="card-desc">Revived a project stalled for over a year. Led cross-functional alignment across Design and Engineering, driving adoption across 4+ teams and 2 consumer-facing applications.</div>
+      </div>
+      <a href="#" class="card-link">View case study →</a>
+    </div>
+    <div class="card">
+      <div class="card-num">03</div>
+      <div>
+        <div class="card-title">Operator Program Launch Banners</div>
+        <div class="card-desc">Technical lead for a high-visibility initiative — coordinated 4 engineers via Jira and delivered the full feature set on schedule with zero major production defects.</div>
+      </div>
+      <a href="#" class="card-link">View case study →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="speaking">
+  <div class="section-head">
+    <div>
+      <div class="section-label">03 — Speaking & Features</div>
+      <h2>On stage &amp; in print</h2>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="row">
+      <div>
+        <div class="row-title">Women in Tech Oxfordshire</div>
+        <div class="row-sub">Co-hosted the event with a fellow female engineer — led to a noticeable increase in women applying for engineering roles at the business, and encouraged other career-switchers to make the leap</div>
+      </div>
+      <div class="row-tag">Speaking</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-title">Tech Fest Women 2026</div>
+        <div class="row-sub">Represented TripAdvisor, captured engineering patterns to share internally</div>
+      </div>
+      <div class="row-tag">Conference</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-title">Codecademy Learner Story</div>
+        <div class="row-sub">Featured after Codecademy reached out directly following her content</div>
+      </div>
+      <div class="row-tag upcoming">Upcoming</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-title">AI Personalisation Panel — with Colorintech</div>
+        <div class="row-sub">Co-organising cross-organisational sessions on agentic AI, bias, and engineering trust</div>
+      </div>
+      <div class="row-tag upcoming">Upcoming · Aug/Sept 2026</div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="community">
+  <div class="section-head">
+    <div>
+      <div class="section-label">04 — Community</div>
+      <h2>WomenCoders & mentoring</h2>
+    </div>
+  </div>
+  <div class="about-text">
+    <p>I've led on the WomenCoders Leadership Team at TripAdvisor since June 2024 — a global initiative supporting women in engineering across the US and UK. I've contributed to improvements in TripAdvisor's interview process, ensuring it works for candidates from non-traditional backgrounds.</p>
+    <p class="muted">Beyond TripAdvisor, I mentor individuals switching into tech from non-traditional backgrounds. About three to four of the people I've mentored have since made the switch themselves, moving into roles in cybersecurity and software engineering.</p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div>
+      <div class="section-label">05 — Certifications</div>
+      <h2>Credentials</h2>
+    </div>
+  </div>
+  <div class="cert-list">
+    <div class="cert-tag">CEng, MIMechE</div>
+    <div class="cert-tag">AWS Training</div>
+  </div>
+</section>
+
+<section class="section wrap" id="contact">
+  <div class="section-head">
+    <div>
+      <div class="section-label">06 — Contact</div>
+      <h2>Let's talk</h2>
+    </div>
+  </div>
+  <p class="hero-sub" style="max-width: 520px;">Happy to hear from event organisers about speaking opportunities, from award panels, or from anyone considering the same career leap.</p>
+  <div class="contact-links">
+    <a href="#" class="pill">Email me</a>
+    <a href="#" class="pill pill-outline">LinkedIn</a>
+  </div>
+  <div class="note">Note: this is a preview build. Real links, photo, and final copy pass still to come. "Side Projects" section reserved in structure — not shown here until there's real content for it.</div>
+</section>
+
+<footer class="wrap">
+  <div>© 2026 Elizabeth Adejumo</div>
+  <div>Built in monochrome, on purpose.</div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const label = document.getElementById('toggleLabel');
+  let isDark = false;
+  toggle.addEventListener('click', () => {
+    isDark = !isDark;
+    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    label.textContent = isDark ? 'Light mode' : 'Dark mode';
+  });
+
+  // Animate the counter on scroll into view
+  const counter = document.getElementById('liveCounter');
+  const breaker = document.querySelector('.breaker');
+  let animated = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        let start = 89085;
+        const end = 393;
+        const duration = 1400;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(start - (start - end) * eased);
+          counter.textContent = value.toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.4 });
+  observer.observe(breaker);
+</script>
+
+</body>
+</html>
