@@ -104,7 +104,7 @@
   @media (max-width: 720px) { nav.main-nav { display: none; } }
 
   /* HERO */
-  .hero { padding: 90px 0 100px; position: relative; --hero-photo-w: 190px; --hero-gap: 48px; }
+  .hero { padding-top: 90px; padding-bottom: 100px; position: relative; --hero-photo-w: 190px; --hero-gap: 48px; }
   .hero-top { display: flex; align-items: center; gap: var(--hero-gap); }
   .hero-below { margin-left: calc(var(--hero-photo-w) + var(--hero-gap)); }
   .hero-photo {
@@ -158,7 +158,7 @@
   .reveal.in { opacity: 1; transform: translateY(0); }
 
   /* SECTION LABELS — giant bleeding numerals kept (anchored at right:0, no negative offset, so no clipping needed — this also stops hover shadows on cert tags/rows from being cut off) */
-  .section { padding: 96px 0; border-top: 1px solid var(--divider); transition: var(--transition); position: relative; }
+  .section { padding-top: 96px; padding-bottom: 96px; border-top: 1px solid var(--divider); transition: var(--transition); position: relative; }
   .section-bgnum {
     position: absolute; top: 20px; right: 0; font-family: 'Fraunces', serif; font-weight: 700;
     font-size: 160px; color: var(--card); line-height: 1; z-index: 0; user-select: none;
@@ -233,12 +233,12 @@
   .row:hover .row-title { color: var(--accent); }
   .row:last-child { border-bottom: none; }
   .row-thumb {
-    width: 160px; height: 116px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+    width: 190px; height: 138px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
     align-self: center; border: 1px solid var(--card-border); box-shadow: var(--shadow-sm);
   }
   @media (max-width: 620px) {
     .row { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .row-thumb { width: 100%; height: 180px; align-self: stretch; }
+    .row-thumb { width: 100%; height: 220px; align-self: stretch; }
   }
   .row-title { font-size: 16px; font-weight: 600; transition: color 0.3s var(--ease); }
   .row-sub {
@@ -394,7 +394,7 @@
   <div class="rows">
     <!-- TODO: replace remaining href="#" with real evidence links (LinkedIn post, event recap, etc.) once available -->
     <a href="https://www.linkedin.com/posts/amber-shand_i-still-cannot-stop-thinking-about-this-iconic-ugcPost-7464825304071680000-8wru/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkT5wEBW3l0P5tKbMu59Os2KDIY-xr5CeQ" class="row" target="_blank" rel="noopener">
-      <img class="row-thumb" src="images/she-bytes-back-side.png" alt="Elizabeth contributing to a discussion at the She Bytes Back x Synthesia event">
+      <img class="row-thumb" src="images/she-bytes-back-side.png" alt="Elizabeth contributing to a discussion at the She Bytes Back x Synthesia event" style="object-position: center 22%;">
       <div><div class="row-title">She Bytes Back × Synthesia</div><div class="row-sub">Contributed to discussions on AI development workflows and the risks of introducing AI tooling to junior engineers too early — among 80+ senior engineers from Google, Spotify, Microsoft, and Cloudflare</div></div>
       <div class="row-tag">Audience Discussion · 2026</div>
     </a>
