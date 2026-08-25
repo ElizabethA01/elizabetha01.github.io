@@ -249,6 +249,8 @@
     border: 1px solid var(--divider); border-radius: 100px; padding: 4px 10px; transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
   }
   .row:hover .row-tag { border-color: var(--accent); color: var(--accent); }
+  .recognition-rows .row { align-items: flex-start; }
+  .recognition-rows .row-thumb { align-self: flex-start; }
 
   /* CERTIFICATIONS */
   .cert-group { position: relative; z-index: 1; margin-bottom: 28px; }
@@ -443,7 +445,7 @@
       <h2>Awards &amp; nominations</h2>
     </div>
   </div>
-  <div class="rows">
+  <div class="rows recognition-rows">
     <a href="https://diversityintechawards.com/finalists-2026/" class="row" target="_blank" rel="noopener">
       <img class="row-thumb" src="images/dita-2026-finalist.jpg" alt="Diversity Inclusion Tech Awards 2026 Finalist">
       <div><div class="row-title">STEM Advocate Award</div><div class="row-sub">Diversity Inclusion Tech Awards</div></div>
